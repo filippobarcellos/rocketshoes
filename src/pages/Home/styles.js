@@ -29,7 +29,7 @@ export const ProductList = styled.ul`
     > span {
       font-size: 21px;
       font-weight: bold;
-      margin: 5px 0 2px;
+      margin: 5px 0 20px;
     }
 
     button {
@@ -39,19 +39,13 @@ export const ProductList = styled.ul`
       border-radius: 4px;
       overflow: hidden;
       margin-top: auto;
+      transition: background 0.2s;
 
       display: flex;
       align-items: center;
-      transition: 0.2s;
 
       &:hover {
         background: ${darken(0.03, '#7159c1')};
-      }
-
-      span {
-        flex: 1;
-        text-align: center;
-        font-weight: bold;
       }
 
       div {
@@ -63,6 +57,13 @@ export const ProductList = styled.ul`
         svg {
           margin-right: 5px;
         }
+      }
+
+      span {
+        flex: 1;
+        text-align: center;
+        font-weight: bold;
+        text-transform: uppercase;
       }
     }
   }

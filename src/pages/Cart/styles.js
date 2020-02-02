@@ -14,13 +14,13 @@ export const Container = styled.div`
 
     button {
       background: #7159c1;
-      color: #fff;
       border: 0;
       border-radius: 4px;
+      color: #fff;
       padding: 12px 20px;
       font-weight: bold;
       text-transform: uppercase;
-      transition: 0.2s;
+      transition: background 0.2s;
 
       &:hover {
         background: ${darken(0.03, '#7159c1')};
@@ -40,7 +40,6 @@ export const ProductTable = styled.table`
 
   tbody td {
     padding: 12px;
-    vertical-align: middle;
     border-bottom: 1px solid #eee;
   }
 
@@ -65,7 +64,7 @@ export const ProductTable = styled.table`
     align-items: center;
 
     input {
-      border: 1px solid #ddd;
+      border: 1px solid #eee;
       border-radius: 4px;
       color: #666;
       padding: 6px;
@@ -90,7 +89,7 @@ export const Total = styled.div`
   }
 
   strong {
-    font-size: 24px;
+    font-size: 28px;
     margin-left: 5px;
   }
 `;
