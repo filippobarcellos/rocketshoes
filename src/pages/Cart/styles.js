@@ -3,22 +3,22 @@ import { darken } from 'polished';
 
 export const Container = styled.div`
   padding: 30px;
-  border-radius: 4px;
   background: #fff;
+  border-radius: 4px;
   footer {
     display: flex;
+    margin-top: 30px;
     justify-content: space-between;
     align-items: center;
-    margin-top: 30px;
     button {
-      padding: 12px 20px;
+      background: #7159c1;
+      color: #fff;
       border: 0;
       border-radius: 4px;
-      color: #fff;
-      background: #7159c1;
+      padding: 12px 20px;
       font-weight: bold;
       text-transform: uppercase;
-      transition: background 0.2s;
+      transition: 0.2s;
       &:hover {
         background: ${darken(0.03, '#7159c1')};
       }
@@ -29,9 +29,9 @@ export const Container = styled.div`
 export const ProductTable = styled.table`
   width: 100%;
   thead th {
-    padding: 12px;
     color: #999;
     text-align: left;
+    padding: 12px;
   }
   tbody td {
     padding: 12px;
@@ -41,8 +41,8 @@ export const ProductTable = styled.table`
     height: 100px;
   }
   strong {
-    display: block;
     color: #333;
+    display: block;
   }
   span {
     display: block;
@@ -54,17 +54,17 @@ export const ProductTable = styled.table`
     display: flex;
     align-items: center;
     input {
-      width: 50px;
-      padding: 6px;
       border: 1px solid #ddd;
       border-radius: 4px;
       color: #666;
+      padding: 6px;
+      width: 50px;
     }
   }
   button {
-    padding: 6px;
-    border: 0;
     background: none;
+    border: 0;
+    padding: 6px;
   }
 `;
 
@@ -76,7 +76,7 @@ export const Total = styled.div`
     font-weight: bold;
   }
   strong {
-    margin-left: 5px;
     font-size: 28px;
+    margin-left: 5px;
   }
 `;

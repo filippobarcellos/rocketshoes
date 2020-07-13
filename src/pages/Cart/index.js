@@ -1,47 +1,106 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
-import { connect } from 'react-redux';
+import {
+  MdRemoveCircleOutline,
+  MdAddCircleOutline,
+  MdDelete,
+} from 'react-icons/md';
+import { formatPrice } from '../../helpers/util';
 
-import { MdRemoveCircleOutline, MdAddCircleOutline, MdDelete } from 'react-icons/md';
+import { useCart } from '../../Context/Cart';
 
 import { Container, ProductTable, Total } from './styles';
 
-function Cart({ cart }) {
+export default function Cart() {
+  const { cart, dispatch } = useCart();
+
+  const cartItems = cart.map(item => ({
+    ...item,
+    subtotal: formatPrice(item.price * item.quantity),
+  }));
+
+  const cartTotal = cart.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+
+  const removeFromCart = id => {
+    dispatch({ type: 'REMOVE_FROM_CART', id });
+  };
+
+  const decrementQtd = item => {
+    dispatch({
+      type: 'UPDATE_CART',
+      payload: {
+        item,
+        qtd: -1,
+      },
+    });
+  };
+
+  const incrementQtd = item => {
+    dispatch({
+      type: 'UPDATE_CART',
+      payload: {
+        item,
+        qtd: 1,
+      },
+    });
+  };
+
   return (
     <Container>
       <ProductTable>
         <thead>
           <tr>
             <th />
-            <th>Produto</th>
-            <th>Quantidade</th>
-            <th>Subtotal</th>
+            <th>PRODUCT</th>
+            <th>QTD</th>
+            <th>SUBTOTAL</th>
             <th />
           </tr>
         </thead>
 
         <tbody>
-          {cart.map((product) => (
-            <tr>
+          {cartItems.map(item => (
+            <tr key={item.id}>
               <td>
-                <img src={product.image} alt={product.title} />
+                <img src={item.image} alt={item.title} />
               </td>
               <td>
-                <strong>{product.title}</strong>
-                <span>{product.priceFormatted}</span>
+                <strong>{item.title}</strong>
+                <span>{item.priceFormatted}</span>
               </td>
-
               <td>
                 <div>
-                  <button type="button"><MdRemoveCircleOutline size={20} color="#7159c1" /></button>
-                  <input type="number" readOnly value={product.amount} />
-                  <button type="button"><MdAddCircleOutline size={20} color="#7159c1" /></button>
+                  <button type="button">
+                    <MdRemoveCircleOutline
+                      size={20}
+                      color="#7159c1"
+                      onClick={() => decrementQtd(item)}
+                    />
+                  </button>
+                  <input type="number" readOnly value={item.quantity} />
+                  <button type="button">
+                    <MdAddCircleOutline
+                      size={20}
+                      color="#7159c1"
+                      onClick={() => incrementQtd(item)}
+                    />
+                  </button>
                 </div>
               </td>
               <td>
-                <strong>$ 300,30</strong>
+                <strong>{item.subtotal}</strong>
               </td>
               <td>
-                <button type="button"><MdDelete size={20} color="#7159c1" /></button>
+                <button type="button">
+                  <MdDelete
+                    size={20}
+                    color="#7159c1"
+                    onClick={() => removeFromCart(item.id)}
+                  />
+                </button>
               </td>
             </tr>
           ))}
@@ -49,17 +108,12 @@ function Cart({ cart }) {
       </ProductTable>
 
       <footer>
-        <button type="button">Check out</button>
+        <button type="button">Checkout</button>
         <Total>
           <span>TOTAL</span>
-          <strong>$ 129,90</strong>
+          <strong>{formatPrice(cartTotal)}</strong>
         </Total>
       </footer>
     </Container>
   );
 }
-const mapStateToProps = (state) => ({
-  cart: state.cart,
-});
-
-export default connect(mapStateToProps)(Cart);

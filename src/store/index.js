@@ -1,11 +1,10 @@
 import { createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-import rootReducer from './modules/rootreducer';
+import rootReducer from './modules/rootReducer';
 
-const enhancer = process.env.NODE_ENV === 'development'
-  ? console.tron.createEnhancer()
-  : null;
+const initialState = {};
 
-const store = createStore(rootReducer, enhancer);
+const store = createStore(rootReducer, initialState, composeWithDevTools());
 
 export default store;
