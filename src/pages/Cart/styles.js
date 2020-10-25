@@ -5,20 +5,13 @@ export const Container = styled.div`
   padding: 30px;
   background: #fff;
   border-radius: 4px;
-<<<<<<< HEAD
 
-=======
->>>>>>> 0741350256f927c2d6d51a3a27d19bd6ddf1b5d8
   footer {
     margin-top: 30px;
     display: flex;
-    margin-top: 30px;
     justify-content: space-between;
     align-items: center;
-<<<<<<< HEAD
 
-=======
->>>>>>> 0741350256f927c2d6d51a3a27d19bd6ddf1b5d8
     button {
       background: #7159c1;
       color: #fff;
@@ -27,12 +20,8 @@ export const Container = styled.div`
       padding: 12px 20px;
       font-weight: bold;
       text-transform: uppercase;
-<<<<<<< HEAD
       transition: background 0.2s;
 
-=======
-      transition: 0.2s;
->>>>>>> 0741350256f927c2d6d51a3a27d19bd6ddf1b5d8
       &:hover {
         background: ${darken(0.03, "#7159c1")};
       }

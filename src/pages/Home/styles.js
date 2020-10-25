@@ -1,16 +1,11 @@
-<<<<<<< HEAD
 import styled from "styled-components";
 import { darken } from "polished";
-=======
-import styled from 'styled-components';
->>>>>>> 0741350256f927c2d6d51a3a27d19bd6ddf1b5d8
 
 export const ProductList = styled.ul`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   list-style: none;
-<<<<<<< HEAD
 
   li {
     display: flex;
@@ -71,6 +66,4 @@ export const ProductList = styled.ul`
       }
     }
   }
-=======
->>>>>>> 0741350256f927c2d6d51a3a27d19bd6ddf1b5d8
 `;
