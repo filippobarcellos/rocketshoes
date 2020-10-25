@@ -1,24 +1,22 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
-import background from '../assets/images/bg.svg';
+import background from "../images/bg.svg";
 
 export default createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
-
   * {
     margin: 0;
     padding: 0;
-    outline: none;
+    outline: 0;
     box-sizing: border-box;
   }
 
   body {
-    background: #191920 url(${background}) no-repeat center top;
-    -webkit-font-smoothing: antialiased;
+    background: #191920 url(${background}) no-repeat; 
+    background-position: center-top;
   }
 
   body, input, button {
-    font: 14px Roboto,sans-serif;
+    font: 14px Roboto, sans-serif;
   }
 
   #root {

@@ -1,27 +1,19 @@
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import GlobalStyle from "./styles/global";
+// import { CartProvider } from "./context/use-cart";
 
-import Header from './components/Header';
-import Routes from './routes';
+import Routes from "./routes";
+import Header from "./components/Header";
 
-import './config/ReactotronConfig';
-import store from './store';
-
-import GlobalStyle from './styles/global';
-
-function App() {
+const App = () => {
   return (
-    <div>
-      <Provider store={store}>
-        <BrowserRouter>
-          <Header />
-          <Routes />
-          <GlobalStyle />
-        </BrowserRouter>
-      </Provider>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Routes />
+      <GlobalStyle />
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
