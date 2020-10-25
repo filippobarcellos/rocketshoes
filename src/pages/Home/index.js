@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import { MdAddShoppingCart } from "react-icons/md";
 // import { useCart } from "../context/use-cart";
@@ -59,6 +60,37 @@ const Home = () => {
         </li>
       </ProductList>
     </div>
+=======
+import React, { useState, useEffect } from 'react';
+import { formatPrice } from '../../helpers/util';
+
+import api from '../../services/api';
+
+import { ProductList } from './styles';
+import Product from '../../components/Product';
+
+const Home = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function loadProducts() {
+      const response = await api.get('products');
+      const data = response.data.map(product => ({
+        ...product,
+        priceFormatted: formatPrice(product.price),
+      }));
+      setProducts(data);
+    }
+    loadProducts();
+  }, []);
+
+  return (
+    <ProductList>
+      {products.map(product => (
+        <Product key={product.id} product={product} />
+      ))}
+    </ProductList>
+>>>>>>> 0741350256f927c2d6d51a3a27d19bd6ddf1b5d8
   );
 };
 
