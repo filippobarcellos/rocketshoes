@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+<p align="center">
+   <img src=".github/logo-chef.png" width="200"/>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# RocketShoes - Shopping cart Context API
 
-## Available Scripts
+> Shopping cart created to understand more about how Context API works in React.
 
-In the project directory, you can run:
+<br />
+<p align="center"><img src=".github/home.gif?raw=true"/></p>
+<p align="center"><img src=".github/toggle_theme.gif?raw=true"/></p>
 
-### `yarn start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# :pushpin: Table of Contents
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- [Features](#rocket-features)
+- [Installation](#construction_worker-installation)
+- [Getting Started](#runner-getting-started)
+- [FAQ](#postbox-faq)
+- [Found a bug? Missing a specific feature?](#bug-issues)
+- [Contributing](#tada-contributing)
+- [License](#closed_book-license)
 
-### `yarn test`
+# :rocket: Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 👩🏽‍🍳 Add and Remove awesome shoes to your cart.
 
-### `yarn build`
+# :construction_worker: Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**You need to install [Node.js](https://nodejs.org/en/download/) and [Yarn](https://yarnpkg.com/) first, then in order to clone the project via HTTPS, run this command:**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`git clone https://github.com/LauraBeatris/foodfy.git`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+SSH URLs provide access to a Git repository via SSH, a secure protocol. If you have a SSH key registered in your Github account, clone the project using this command:
 
-### `yarn eject`
+`git clone git@github.com:LauraBeatris/foodfy.git`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**Install dependencies**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`yarn install`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Create your environment variables based on the examples of `.env.example`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+`cp .env.example .env`
 
-## Learn More
+After copying the examples, make sure to fill the variables with new values.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# :runner: Getting Started
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Running with docker-compose**
 
-### Code Splitting
+In order to prepare the database and also run the application, set your environment variables and then execute docker-compose
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+`docker-compose up`
 
-### Analyzing the Bundle Size
+With this command, the port seted in your environment `PORT` variable will be available to access the application.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Manually setup**
 
-### Making a Progressive Web App
+You may prefer to manually configure the database and the application.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Install [Postgres](https://www.postgresql.org/) to create a database or if you have [Docker](https://www.docker.com/) in your machine, fill the environment values related to database configurations and the run the following commands in order to create a postgres container.
 
-### Advanced Configuration
+`docker-compose up postgres`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Execute the follow command to create tables, relationships and procedures:
 
-### Deployment
+`yarn db:create`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+To start, run the seeds provided in [Seeds](https://github.com/LauraBeatris/foodfy/blob/master/src/database/seeds.js) in order to populate the database with an initial data.
 
-### `yarn build` fails to minify
+`yarn run:seeds`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Run the following command in order to start the application in a development environment:
+
+`yarn dev`
+
+# :postbox: Faq
+
+**Question:** What are the technologies used in this project?
+
+**Answer:** The tecnologies used in this project are [NodeJS](https://nodejs.org/en/) + [Express Framework](http://expressjs.com/en/) to handle the server, [Nunjucks](https://mozilla.github.io/nunjucks/templating.html) to develop amazing views & [SCSS](https://sass-lang.com/documentation/syntax) to handle the styles architecture and a better maintenance than normal CSS.
+
+##
+
+**Question:** How the multi language support is handled by the server?
+
+**Answer:** This application handle multi language support with the help of a library called [i18n-node](https://github.com/mashpie/i18n-node). It has a middleware that gather language settings of visitors and then persist translations from [JSON files](https://github.com/LauraBeatris/foodfy/tree/master/src/locales) related with a specific locale.
+
+The locale is storaged as a cookie named `foodfy:locale` and that can be changed by passing a query string with the value `?lang=pt`
+
+##
+
+**Question:** Are all kind of users able to create and update chefs or recipes?
+
+**Answer:** The application has two kind of users: Visitors and Administrators. As a administrator, you're able to create, update and view all the data related to recipes, chefs and also other users. Visitors can also access the admin platform but they don't have access to the views responsable to create and update data.
+
+Made by [Filippo Barcellos](https://github.com/filippobarcellos) 🚀
