@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { MdAddShoppingCart } from "react-icons/md";
 import api from "../../services/api";
 import { formatPrice } from "../../utils/format";
-// import { useCart } from "../context/use-cart";
+import { useCart } from "../../context/use-cart";
 
 import { ProductList } from "./styles";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
-  // const { addItem, removeItem, countItemsInCart } = useCart();
+  const { addToCart } = useCart();
 
   useEffect(() => {
     async function fetchProducts() {
@@ -30,9 +30,9 @@ const Home = () => {
           <li key={product.id}>
             <img src={product.image} alt={product.title} />
             <strong>{product.title}</strong>
-            <strong>${product.price}</strong>
+            <strong>{product.priceFormatted}</strong>
 
-            <button type="button">
+            <button type="button" onClick={() => addToCart(product)}>
               <div>
                 <MdAddShoppingCart sie={16} color="#FFF" />
               </div>

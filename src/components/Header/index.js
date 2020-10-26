@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { MdShoppingBasket } from "react-icons/md";
+import { useCart } from "../../context/use-cart";
 
 import logo from "../../images/logo.svg";
 
 import { Container, Cart } from "./styles";
 
 function Header() {
+  const { cart } = useCart();
   return (
     <Container>
       <Link to="/">
@@ -16,7 +18,7 @@ function Header() {
       <Cart to="/cart">
         <div>
           <strong>My Cart</strong>
-          <span>3 items</span>
+          <span>{cart.length} items</span>
         </div>
         <MdShoppingBasket size={36} color="#FFF" />
       </Cart>
